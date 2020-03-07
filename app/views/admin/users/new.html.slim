@@ -1,18 +1,6 @@
-= form_with model: [:admin, @user], local: true do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'user_name'
-  .form-group
-    = f.label :email
-    = f.text_field :email, class: 'form-control', id: 'user_email'
-  .form-check
-    = f.label :admin, class: 'form-check-label' do
-      =f.check_box :admin, class: 'form-check-input'
-      | 管理者権限
-  .form-group
-    = f.label :password
-    = f.text_field :password, class: 'form-control', id: 'user_password'
-  .form-group
-    = f.label :password_confirmation
-    = f.text_field :password_confirmations, class: 'form-control', id: 'user_password_confirmation'
-  = f.submit nil, class: 'btn btn-primary'
+h1 ユーザー登録
+
+.nav.justify-content-end
+  =link_to '一覧', admin_users_path, class: 'nav-link'
+  
+=render partial: 'form', locals:{user: @user}
