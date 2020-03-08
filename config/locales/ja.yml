@@ -19,14 +19,14 @@ ja:
       user:
         id: ID
         name: 名前
-        email: メール
+        email: メールアドレス
         admin: 管理者権限
         password: パスワード
         password_confirmation: パスワード(確認用)
         created_at: 登録日時
         updated_at: 更新日時
       session:
-        email: メール
+        email: メールアドレス
         password: パスワード
   date:
     abbr_day_names:
