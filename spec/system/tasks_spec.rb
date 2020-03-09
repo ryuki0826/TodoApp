@@ -32,6 +32,8 @@ describe 'タスク管理画面一覧', type: :system do
     end
   end
   
+  
+  
   describe '詳細表示機能' do
     context 'ユーザーAがログインしているとき' do
       let(:login_user) {user_a}
@@ -41,6 +43,35 @@ describe 'タスク管理画面一覧', type: :system do
       end
       
       it_behaves_like 'ユーザーAが作成したタスクが表示される' 
+    end
+  end
+  
+  describe '新規作成機能' do
+    let(:login_user) {user_a}
+    let(:task_name) {'新規作成のテストを書く'}
+     
+    before do
+      visit new_task_path
+      fill_in '名称', with: task_name
+      click_button '登録する'
+    end
+    
+    context '新規作成画面で名称を入力したとき' do
+     
+      
+      it '正常に登録される' do
+        expect(page).to have_selector '.alert-success',text: '新規作成のテストを書く'
+      end
+    end
+    
+    context '新規作成画面で名称を入力しなかったとき' do
+      let(:task_name) {''}
+      
+      it 'エラーとなる' do
+        within '#error_explanation' do
+          expect(page).to have_content '名称を入力してください'
+        end
+      end
     end
   end
 end
