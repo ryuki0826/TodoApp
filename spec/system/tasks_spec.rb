@@ -16,6 +16,10 @@ describe 'タスク管理画面一覧', type: :system do
     it {expect(page).to have_content '最初のタスク'}
   end
   
+  shared_examples_for 'エラーとなる' do
+    it {expect(page).to have_content '最初のタスク'}
+  end
+  
   describe '#index' do
     context 'ユーザーAがログインしているとき' do
       let(:login_user) {user_a}
@@ -89,7 +93,7 @@ describe 'タスク管理画面一覧', type: :system do
       end
     end
     
-    context '編集画面で名称を入力しなかったとき' do
+    context '画面で名称を入力しなかったとき' do
       let(:task_name) {''}
       
       it 'エラーとなる' do
